@@ -31,6 +31,10 @@ This tool was created as a simulation tool to increase awareness around ransomwa
    4. Upload the new decrypted file with the original name without the encrypted extension suffix
 5. The default decrypted file extension is set to ```.enc``` and be configured by using the ```--encrypted-file-extension``` option.
 
+### Hunting Queries
+After simulating the ransomware, it is recommended to perform an analysis of the activities made during the simulation.
+Threat hunting queries are available <a href="https://github.com/axon-git/threat-hunting/tree/main/OneDrive%20Ransomware">here</a>
+
 ## How to use
 OneDriveRansomware uses Poetry to allow easy and fast dependency installation. 
 ### Installation
