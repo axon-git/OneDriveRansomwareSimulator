@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "OneDriveRansomware"
+version = "0.1.0"
+description = ""
+authors = ["netanelgolani <netanel.g@hunters.ai>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "2.31.0"
+cryptography = "41.0.7"
+urllib3 = "1.26.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
