@@ -32,7 +32,7 @@ This tool was created as a simulation tool to increase awareness around ransomwa
 5. The default decrypted file extension is set to ```.enc``` and be configured by using the ```--encrypted-file-extension``` option.
 
 ### Hunting Queries
-After simulating the ransomware, it is recommended to perform an analysis of the activities made during the simulation.
+After simulating the ransomware, it is recommended to perform an analysis of the activities made during the simulation.<br>
 Threat hunting queries are available <a href="https://github.com/axon-git/threat-hunting/tree/main/OneDrive%20Ransomware">here</a>
 
 ## How to use
