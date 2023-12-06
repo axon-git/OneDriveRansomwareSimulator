@@ -15,7 +15,7 @@ This tool was created as a simulation tool to increase awareness around ransomwa
 3. The tool will enumerate all files that are stored in the token's user private drive. The tool will not encrypt file that are not stored in the user's private drive.
 4. After having a list of all the files to encrypt, the tool will iteratively:
    1. Read the file content
-   2. encrypt the content using the key stored at ```--key-path```
+   2. Encrypt the content using the key stored at ```--key-path```
    3. Permanently delete the original file
    4. Upload the new encrypted file with the original name with an encrypted extension suffix
 5. The default encrypted file extension is set to ```.enc``` and be configured by using the ```--encrypted-file-extension``` option.
@@ -26,7 +26,7 @@ This tool was created as a simulation tool to increase awareness around ransomwa
 3. The tool will enumerate all files that are stored in the token's user private drive. The tool will not encrypt file that are not stored in the user's private drive.
 4. After having a list of all the files to encrypt, the tool will iteratively:
    1. Read the file content
-   2. decrypt the content using the key stored at ```--key-path```
+   2. Decrypt the content using the key stored at ```--key-path```
    3. Permanently delete the encrypted file from OneDrive
    4. Upload the new decrypted file with the original name without the encrypted extension suffix
 5. The default decrypted file extension is set to ```.enc``` and be configured by using the ```--encrypted-file-extension``` option.
