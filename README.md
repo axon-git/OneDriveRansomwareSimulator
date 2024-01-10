@@ -5,13 +5,13 @@
 OneDriveRansomware is a proof-of-concept tool that is designed to allow simulating ransomware capabilities against OneDrive in Microsoft 365.  
 
 ### Disclaimer
-This tool was created as a simulation tool to increase awareness around ransomware threats and to help in improving the security posture of organizations. This tool should be used solely for authorized security research purposes. This tool is provided “as is” and Hunters.secuity disclaims any and all warranties and liabilities regarding the use/misuse of this tool. Use responsibly.
+This tool was created as a simulation tool to increase awareness around ransomware threats and to help improve the security posture of organizations. This tool should be used solely for authorized security research purposes. This tool is provided “as is” and Hunters.secuity disclaims any and all warranties and liabilities regarding the use/misuse of this tool. Use responsibly.
 
 
 ## <b> How It works </b>
 ### Starting a ransomware attack
-1. When the tool is set to start a ransomware attack, it will use the access token to set a session to OneDrive. The access token is should be set in ```./config/token.txt``` (or elsewhere by specifying the optional ```--key-path``` argument).
-2. If the tool is set to generate a encryption new key (using the optional flag ```--generate-key``` to create a symmetric key), it will generate a key and write it to a default file location at ```./config/key.txt``` (can be customized by the optional ```--key-path``` argument). 
+1. When the tool is set to start a ransomware attack, it will use the access token to set a session to OneDrive. The access token should be set in ```./config/token.txt``` (or elsewhere by specifying the optional ```--key-path``` argument).
+2. If the tool is set to generate an encryption new key (using the optional flag ```--generate-key``` to create a symmetric key), it will generate a key and write it to a default file location at ```./config/key.txt``` (can be customized by the optional ```--key-path``` argument). 
 3. The tool will enumerate all files that are stored in the user's (that the token belongs to) private drive. As a security measure, the tool will not encrypt files that are stored in drives shared with the user.
 4. After having a list of all the files to encrypt, the tool will iteratively:
    1. Read a file's content
@@ -22,7 +22,7 @@ This tool was created as a simulation tool to increase awareness around ransomwa
 
 ### Reverting a ransomware attack
 
-1. Similarly to the encryption flow, when the tool is set to revert a ransomware attack, it will use the access token to set a session to OneDrive. The access token is should be set in ```./config/token.txt``` (or elsewhere by specifying the optional ```--key-path``` argument).
+1. Similarly to the encryption flow, when the tool is set to revert a ransomware attack, it will use the access token to set a session to OneDrive. The access token should be set in ```./config/token.txt``` (or elsewhere by specifying the optional ```--key-path``` argument).
 2. The tool will use the key  that is set in ```./config/key.txt``` (or elsewhere set by the optional ```--key-path``` argument) as the decryption key 
 3. The tool will enumerate all files that are stored in the user's (that the token belongs to) private drive. As mentioned before, the tool will not encrypt files that are stored in drives shared with the user.
 4. After having a list of all the files to decrypt, the tool will iteratively:
@@ -78,7 +78,7 @@ optional arguments:
 ## Examples
 ### Start a Ransomware Attack 
 #### Case #1
-Execute a ransomware attack, take the token from the default location ```./config/token.txt```, generate a new encryption key and store it in the default location ```./config/key.txt```
+Execute a ransomware attack, take the token from the default location ```./config/token.txt```, generate a new encryption key, and store it in the default location ```./config/key.txt```
 ```commandline
 python /OneDriveRansomware/main.py --start-ransomware --generate-key
 ```
