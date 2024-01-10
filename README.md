@@ -10,26 +10,27 @@ This tool was created as a simulation tool to increase awareness around ransomwa
 
 ## <b> How It works </b>
 ### Starting a ransomware attack
-1. When the tool is set to start a ransomware attack, it will use the access token to set a session to OneDrive.
-2. If the tool is set to generate a new key, it will generate a key and write it to the key path that is set by ```--key-path``` (default file path: ```./config/key.txt```). 
-3. The tool will enumerate all files that are stored in the token's user private drive. The tool will not encrypt file that are not stored in the user's private drive.
+1. When the tool is set to start a ransomware attack, it will use the access token to set a session to OneDrive. The access token is should be set in ```./config/token.txt``` (or elsewhere by specifying the optional ```--key-path``` argument).
+2. If the tool is set to generate a encryption new key (using the optional flag ```--generate-key``` to create a symmetric key), it will generate a key and write it to a default file location at ```./config/key.txt``` (can be customized by the optional ```--key-path``` argument). 
+3. The tool will enumerate all files that are stored in the user's (that the token belongs to) private drive. As a security measure, the tool will not encrypt files that are stored in drives shared with the user.
 4. After having a list of all the files to encrypt, the tool will iteratively:
-   1. Read the file content
-   2. Encrypt the content using the key stored at ```--key-path```
+   1. Read a file's content
+   2. Encrypt the content using the specified encryption key
    3. Permanently delete the original file
    4. Upload the new encrypted file with the original name with an encrypted extension suffix
-5. The default encrypted file extension is set to ```.enc``` and be configured by using the ```--encrypted-file-extension``` option.
+5. The default encrypted file extension is set to ```.enc``` and be configured by using the optional ```--encrypted-file-extension``` argument.
 
 ### Reverting a ransomware attack
-1. When the tool is set to revert a ransomware attack, it will use the access token to set a session to OneDrive.
-2. The tool will user the key set to generate a new key, it will generate a key and write it to the key path that is set by ```--key-path``` (default file path: ```./config/key.txt```). 
-3. The tool will enumerate all files that are stored in the token's user private drive. The tool will not encrypt file that are not stored in the user's private drive.
-4. After having a list of all the files to encrypt, the tool will iteratively:
+
+1. Similarly to the encryption flow, when the tool is set to revert a ransomware attack, it will use the access token to set a session to OneDrive. The access token is should be set in ```./config/token.txt``` (or elsewhere by specifying the optional ```--key-path``` argument).
+2. The tool will use the key  that is set in ```./config/key.txt``` (or elsewhere set by the optional ```--key-path``` argument) as the decryption key 
+3. The tool will enumerate all files that are stored in the user's (that the token belongs to) private drive. As mentioned before, the tool will not encrypt files that are stored in drives shared with the user.
+4. After having a list of all the files to decrypt, the tool will iteratively:
    1. Read the file content
-   2. Decrypt the content using the key stored at ```--key-path```
+   2. Decrypt the content using the decryption key
    3. Permanently delete the encrypted file from OneDrive
    4. Upload the new decrypted file with the original name without the encrypted extension suffix
-5. The default decrypted file extension is set to ```.enc``` and be configured by using the ```--encrypted-file-extension``` option.
+5. Same as before, the default file extension of the encrypted files is set to ```.enc``` and be configured by using the ```--encrypted-file-extension``` option.
 
 ### Hunting Queries
 After simulating the ransomware, it is recommended to perform an analysis of the activities made during the simulation.<br>
@@ -37,6 +38,7 @@ Threat hunting queries are available <a href="https://github.com/axon-git/threat
 
 ## How to use
 OneDriveRansomware uses Poetry to allow easy and fast dependency installation. 
+
 ### Installation
 - Set up relevant packages and dependencies using Poetry. 
 ```
@@ -74,23 +76,26 @@ optional arguments:
 ```
 
 ## Examples
-Execute a ransomware attack, take the token from the default location ```./config/token.txt``` and generate a new encryption key and store it in the default location ```./config/key.txt```
+### Start a Ransomware Attack 
+#### Case #1
+Execute a ransomware attack, take the token from the default location ```./config/token.txt```, generate a new encryption key and store it in the default location ```./config/key.txt```
 ```commandline
 python /OneDriveRansomware/main.py --start-ransomware --generate-key
 ```
-<br>
 
+#### Case #2
 Execute a ransomware attack, take the token from ```/Downloads/access_token.txt```, generate a new encryption key and store it in ```./config/key.txt```
 ```commandline
 python /OneDriveRansomware/main.py --start-ransomware --token-path /Downloads/access_token.txt --generate-key
 ```
-
 <br>
+
+### Start a Ransomware Attack
 
 Revert the ransomware attack, take the token from the default location ```./config/token.txt``` and use the decryption key stored in ```./config/key.txt```
 ```commandline
 python /OneDriveRansomware/main.py --revert-ransomware
 ```
 
-#### Credits
+### Credits
 OneDrive's objects and API utilization were inspired from <a href="https://github.com/SafeBreach-Labs/DoubleDrive">DoubleDrive</a> by <a href="https://safebreach.com/">SafeBreach</a>   
