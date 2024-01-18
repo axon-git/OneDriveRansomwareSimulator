@@ -2,7 +2,7 @@
 
 
 ## Description
-OneDriveRansomware is a proof-of-concept tool that is designed to allow simulating ransomware capabilities against OneDrive in Microsoft 365.  
+OneDriveRansomwareSimulator is a proof-of-concept tool that is designed to allow simulating ransomware capabilities against OneDrive in Microsoft 365.  
 
 ### Disclaimer
 This tool was created as a simulation tool to increase awareness around ransomware threats and to help improve the security posture of organizations. This tool should be used solely for authorized security research purposes. This tool is provided “as is” and Hunters.secuity disclaims any and all warranties and liabilities regarding the use/misuse of this tool. Use responsibly.
@@ -37,12 +37,12 @@ After simulating the ransomware, it is recommended to perform an analysis of the
 Threat hunting queries are available <a href="https://github.com/axon-git/threat-hunting/tree/main/OneDrive%20Ransomware">here</a>
 
 ## How to use
-OneDriveRansomware uses Poetry to allow easy and fast dependency installation. 
+OneDriveRansomwareSimulator uses Poetry to allow easy and fast dependency installation. 
 
 ### Installation
 - Set up relevant packages and dependencies using Poetry. 
 ```
-git clone git@github.com:axon-git/OneDriveRansomware.git
+git clone git@github.com:axon-git/OneDriveRansomwareSimulator.git
 poetry install
 poetry shell
 ```
@@ -80,13 +80,13 @@ optional arguments:
 #### Case #1
 Execute a ransomware attack, take the token from the default location ```./config/token.txt```, generate a new encryption key, and store it in the default location ```./config/key.txt```
 ```commandline
-python /OneDriveRansomware/main.py --start-ransomware --generate-key
+python /OneDriveRansomwareSimulator/main.py --start-ransomware --generate-key
 ```
 
 #### Case #2
 Execute a ransomware attack, take the token from ```/Downloads/access_token.txt```, generate a new encryption key and store it in ```./config/key.txt```
 ```commandline
-python /OneDriveRansomware/main.py --start-ransomware --token-path /Downloads/access_token.txt --generate-key
+python /OneDriveRansomwareSimulator/main.py --start-ransomware --token-path /Downloads/access_token.txt --generate-key
 ```
 <br>
 
@@ -94,7 +94,7 @@ python /OneDriveRansomware/main.py --start-ransomware --token-path /Downloads/ac
 
 Revert the ransomware attack, take the token from the default location ```./config/token.txt``` and use the decryption key stored in ```./config/key.txt```
 ```commandline
-python /OneDriveRansomware/main.py --revert-ransomware
+python /OneDriveRansomwareSimulator/main.py --revert-ransomware
 ```
 
 ### Credits
