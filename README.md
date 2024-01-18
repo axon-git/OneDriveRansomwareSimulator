@@ -1,4 +1,4 @@
-# OneDrive Ransomware
+# OneDrive Ransomware Simulator
 
 
 ## Description
