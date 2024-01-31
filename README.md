@@ -1,11 +1,15 @@
+
+  
 # OneDrive Ransomware Simulator  
+  
   
 ## Description  
 OneDriveRansomwareSimulator is a proof-of-concept tool that is designed to allow simulating ransomware capabilities against OneDrive in Microsoft 365.    
   
 ### Disclaimer  
-This tool was created as a simulation tool to increase awareness around ransomware threats and to help improve the security posture of organizations. This tool should be used solely for authorized security research purposes. This tool is provided “as is” and Hunters.secuity disclaims any and all warranties and liabilities regarding the use/misuse of this tool. Use responsibly. 
-
+This tool was created as a simulation tool to increase awareness around ransomware threats and to help improve the security posture of organizations. This tool should be used solely for authorized security research purposes. This tool is provided “as is” and Hunters.secuity disclaims any and all warranties and liabilities regarding the use/misuse of this tool. Use responsibly.  
+  
+  
 ## <b>How It works</b>  
 ### Starting a ransomware attack simulation
 1. When the tool is set to start a ransomware attack, it will use the access token to set a session to OneDrive. The access token should be set in `./config/token.txt` (or elsewhere by specifying the optional `--key-path` argument).  
@@ -37,7 +41,7 @@ After simulating the ransomware, it is recommended to perform an analysis of the
 Threat hunting queries are available <a href="https://github.com/axon-git/threat-hunting/tree/main/OneDrive%20Ransomware">here</a>  
   
 ## How to use  
-OneDriveRansomwareSimulator uses Poetry to allow easy and fast dependency installation.
+OneDriveRansomwareSimulator uses Poetry to allow easy and fast dependencies installation.
   
   
 ### Installation  
@@ -106,7 +110,7 @@ python /OneDriveRansomwareSimulator/main.py --target-user myuser@mydomain.com --
 ```
 
 #### Case #3 - Let the simulator create an access token
-Execute a ransomware attack on `myuser@mydomain.com`'s personal drive, generate an access token token using a registered application 'credentials' (tenant ID, client ID, client secret), generate a new encryption key and store it in `./config/key.txt`
+Execute a ransomware attack on `myuser@mydomain.com`'s personal drive, generate an access token toekn using a registered application 'credentials' (tenant ID, client ID, client secret), generate a new encryption key and store it in `./config/key.txt`
 ```commandline
 python /OneDriveRansomwareSimulator/main.py --target-user myuser@mydomain.com --start-ransomware --generate-key --tenant-id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX --client-id YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY --client-secret mylittlesecret
 ```
